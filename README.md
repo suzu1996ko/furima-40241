@@ -9,7 +9,7 @@
 | first_name         | string | null: false |
 | family_name_kana   | string | null: false |
 | first_name_kana    | string | null: false |
-| birthday           | string | null: false |
+| birthday           | date | null: false |
 
 ### Association
 
@@ -20,16 +20,15 @@ has_many :purchase_records
 
 | Column             | Type   |Options     |
 | ------------------ | ------ |----------- |
-| image              | string | null: false |
 | name               | string | null: false |
 | item_details       | text   | null: false |
-| category           | string | null: false |
-| state              | string | null: false |
+| category_id        | integer | null: false |
+| state_id           | integer | null: false |
 | price              | integer | null: false |
-| user_id            | references | null: false ,foreign_key: true|
-| postage            | integer | null: false |
-| region             | integer | null: false |
-| shipping_date      | integer | null: false |
+| user               | references | null: false ,foreign_key: true|
+| postage_id         | integer | null: false |
+| prefecture_id      | integer | null: false |
+| shipping_date_id   | integer | null: false |
 
 ### Association
 
@@ -40,13 +39,13 @@ has_one :purchase_record
 
 | Column             | Type   |Options     |
 | ------------------ | ------ |----------- |
-| telephone_number   | string | null: false, unique: true |
-| user_id            | references | null: false ,foreign_key: true|
-| item_id            | references | null: false ,foreign_key: true|
+| user            | references | null: false ,foreign_key: true|
+| item            | references | null: false ,foreign_key: true|
 
 ### Association
 
 belongs_to :user
+belongs_to :item
 belongs_to :address
 
 ## addresses テーブル
@@ -54,10 +53,12 @@ belongs_to :address
 | Column             | Type   |Options     |
 | ------------------ | ------ |----------- |
 | post_code          | integer | null: false |
-| prefecture         | string  | null: false |
+| prefecture_id      | integer | null: false |
 | municipality       | string  | null: false |
 | house_number       | string  | null: false |
 | building_name      | string  |  |
+| phone_number       | string  | null: false, unique: true |
+| purchase_record    | references | null: false,foreign_key: true  |
 
 ### Association
 
