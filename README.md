@@ -2,8 +2,8 @@
 
 | Column             | Type   |Options     |
 | ------------------ | ------ |----------- |
-| name               | string | null:false |
-| email              | string | null:false, unique: true |
+| name               | string | null: false |
+| email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | family_name        | string | null: false |
 | first_name         | string | null: false |
@@ -25,7 +25,7 @@ has_many :purchase_records
 | category_id        | integer | null: false |
 | state_id           | integer | null: false |
 | price              | integer | null: false |
-| user               | references | null: false ,foreign_key: true|
+| user               | references | null: false, foreign_key: true|
 | postage_id         | integer | null: false |
 | prefecture_id      | integer | null: false |
 | shipping_date_id   | integer | null: false |
@@ -39,8 +39,8 @@ has_one :purchase_record
 
 | Column             | Type   |Options     |
 | ------------------ | ------ |----------- |
-| user            | references | null: false ,foreign_key: true|
-| item            | references | null: false ,foreign_key: true|
+| user            | references | null: false, foreign_key: true|
+| item            | references | null: false, foreign_key: true|
 
 ### Association
 
@@ -58,7 +58,7 @@ has_one :address
 | house_number       | string  | null: false |
 | building_name      | string  |  |
 | phone_number       | string  | null: false, unique: true |
-| purchase_record    | references | null: false,foreign_key: true  |
+| purchase_record    | references | null: false, foreign_key: true  |
 
 ### Association
 
