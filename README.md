@@ -46,13 +46,13 @@ has_one :purchase_record
 
 belongs_to :user
 belongs_to :item
-belongs_to :address
+has_one :address
 
 ## addresses テーブル
 
 | Column             | Type   |Options     |
 | ------------------ | ------ |----------- |
-| post_code          | integer | null: false |
+| post_code          | string | null: false |
 | prefecture_id      | integer | null: false |
 | municipality       | string  | null: false |
 | house_number       | string  | null: false |
