@@ -62,44 +62,44 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailは@を含まないと登録できない' do
         @user.email = 'testmail'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが5文字以下では登録できない' do
         @user.password = '111aa'
         @user.password_confirmation = '111aa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it 'passwordが129文字以上では登録できない' do
         @user.password = Faker::Internet.password(min_length: 129, max_length: 150)
         @user.password_confirmation = @user.password
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
+        expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
       end
       it 'family_nameが全角入力出なければ登録できない' do
-        @user.family_name = "ｱｱｱｱｱ"
+        @user.family_name = 'ｱｱｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Family name 全角文字を使用してください')
       end
       it 'first_nameが全角入力出なければ登録できない' do
-        @user.first_name = "ｱｱｱｱｱ"
+        @user.first_name = 'ｱｱｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
       end
       it 'family_name_kanaが全角カナ入力出なければ登録できない' do
-        @user.family_name_kana = "ｱｱｱｱｱ"
+        @user.family_name_kana = 'ｱｱｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana 全角カナ文字を使用してください")
+        expect(@user.errors.full_messages).to include('Family name kana 全角カナ文字を使用してください')
       end
       it 'first_name_kanaが全角カナ入力出なければ登録できない' do
-        @user.first_name_kana = "ｱｱｱｱｱ"
+        @user.first_name_kana = 'ｱｱｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana 全角カナ文字を使用してください")
+        expect(@user.errors.full_messages).to include('First name kana 全角カナ文字を使用してください')
       end
     end
   end
