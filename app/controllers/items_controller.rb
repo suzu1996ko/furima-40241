@@ -6,4 +6,10 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+
+  private
+
+  def message_params
+    params.require(:item).permit(:image)
+  end
 end
