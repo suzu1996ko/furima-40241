@@ -22,6 +22,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
+      it 'imageが空では出品できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
       it 'item_detailsが空では出品できない' do
         @item.item_details = ''
         @item.valid?
