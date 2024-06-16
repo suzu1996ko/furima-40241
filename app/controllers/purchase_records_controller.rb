@@ -1,8 +1,11 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @purchase_address = PurchaseAddress.new
     @item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id == @item.user_id || !@item.purchase_record.nil?
   end
 
   def create
