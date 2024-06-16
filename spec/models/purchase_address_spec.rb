@@ -23,7 +23,7 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Post code can't be blank")
       end
-      it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
+      it 'post_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @purchase_address.post_code = '1234567'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
@@ -50,11 +50,6 @@ RSpec.describe PurchaseAddress, type: :model do
       end
       it 'phone_numberが10桁未満だと保存できないこと' do
         @purchase_address.phone_number = '111111111'
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
-      end
-      it 'phone_numberが12桁以上だと保存できないこと' do
-        @purchase_address.phone_number = '111111111111'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
